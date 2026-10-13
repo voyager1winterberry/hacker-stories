@@ -23,16 +23,10 @@ const list = [
   }
 ]
 
-function getTitle(title) {
-  return title;
-}
-
-
-function App() {
-
+const App = () => {
   return (
     <div>
-      <h1>Hello {getTitle('React')}</h1>
+      <h1>My Hacker Stories</h1>
       <Search />
       <hr />
       <List />
@@ -40,7 +34,7 @@ function App() {
   )
 }
 
-function Search() {
+const Search = () => {
   return (
     <div>
       <label htmlFor="search">Search</label>
@@ -49,10 +43,10 @@ function Search() {
   )
 }
 
-function List() {
+const List = () => {
   return (
   <ul>
-    {list.map( function (item) {
+    {list.map((item) => {
       return (
         <li key={item.objectID}>
           <span><a href={item.url}>{item.title}</a></span> 
