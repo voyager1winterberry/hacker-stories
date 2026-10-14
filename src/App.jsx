@@ -4,7 +4,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
-const list = [
+const App = () => {
+  const stories = [
   {
     title: 'React',
     url: 'https://react.dev',
@@ -22,14 +23,13 @@ const list = [
     objectID: 1
   }
 ]
-
-const App = () => {
+  
   return (
     <div>
       <h1>My Hacker Stories</h1>
       <Search />
       <hr />
-      <List />
+      <List list={stories} />
     </div>
   )
 }
@@ -50,21 +50,21 @@ const Search = () => {
   )
 }
 
-const List = () => {
-  return (
+const List = (props) => (
   <ul>
-    {list.map((item) => {
-      return (
-        <li key={item.objectID}>
-          <span><a href={item.url}>{item.title}</a></span> 
-          <span>{item.author}</span>
-          <span>{item.num_comments}</span>
-          <span>{item.points}</span>
-        </li>
-      )
-    })}
+    {props.list.map((item) => (
+      <Item key={item.objectID} item={item} />
+    ))}
   </ul>
-  )
-}
+)
+
+const Item = (props) => (
+  <li>
+    <span><a href={props.item.url}>{props.item.title}</a></span> 
+    <span>{props.item.author}</span>
+    <span>{props.item.num_comments}</span>
+    <span>{props.item.points}</span>
+  </li>
+)
 
 export default App
